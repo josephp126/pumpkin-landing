@@ -12,9 +12,6 @@
     <meta content="Team" property="twitter:title" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
-    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
-    <link href="css/webflow.css" rel="stylesheet" type="text/css" />
-    <link href="css/bday-info.webflow.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -104,6 +101,33 @@
 
       .profile-pic {
         text-align: center;
+      }
+
+      .w-button {
+        display: inline-block;
+        padding: 9px 15px;
+        background-color: #3898ec;
+        color: white;
+        border: 0;
+        line-height: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 0;
+      }
+
+      .button {
+        position: fixed;
+        left: auto;
+        top: auto;
+        right: 1%;
+        bottom: 1%;
+        z-index: 999999;
+        border: 6px solid #000;
+        border-radius: 30px;
+        background-color: #fff;
+        font-family: Creepster, sans-serif;
+        color: #000;
+        font-size: 1.3em;
       }
       @media (min-width: 992px) {
         .team .col-md-4 {

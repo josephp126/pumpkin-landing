@@ -64,3 +64,30 @@ div.post button {
   border: 4px solid black;
   padding: 10px;
 }
+
+.w-button {
+  display: inline-block;
+  padding: 9px 15px;
+  background-color: #3898ec;
+  color: white;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.button {
+  position: fixed;
+  left: auto;
+  top: auto;
+  right: 1%;
+  bottom: 1%;
+  z-index: 999999;
+  border: 6px solid #000;
+  border-radius: 30px;
+  background-color: #fff;
+  font-family: Creepster, sans-serif;
+  color: #000;
+  font-size: 1.3em;
+}
