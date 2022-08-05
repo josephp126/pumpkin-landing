@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "cursi";
+  src: url("../fonts/Tilda Script S Non-connect Demo.ttf");
+}
 body {
   font-family: "Open Sans", sans-serif;
   padding: 5% 4% 4% 4%;
@@ -6,7 +10,7 @@ body {
 .page-title {
   font-size: 56px;
   color: white;
-  font-family: cursive;
+  font-family: cursi;
   text-align: center;
   margin-bottom: 80px;
   text-shadow: 5px 5px 0 black;
@@ -39,7 +43,7 @@ div.post button {
 .list-post {
   font-size: 40px;
   color: white;
-  font-family: cursive;
+  font-family: cursi;
   text-align: left;
   margin-bottom: 30px;
   text-shadow: 3px 5px 0 black;
@@ -95,6 +99,6 @@ div.post button {
 @media (max-width: 600px) {
   .page-title,
   .list-post {
-    font-family: cursive !important;
+    font-family: cursi !important;
   }
 }
