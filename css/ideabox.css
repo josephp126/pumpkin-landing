@@ -91,3 +91,10 @@ div.post button {
   color: #000;
   font-size: 1.3em;
 }
+
+@media (max-width: 600px) {
+  .page-title,
+  .list-post {
+    font-family: cursive !important;
+  }
+}
