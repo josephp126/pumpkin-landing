@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html
+  data-wf-page="6278b492b1c98b4cb6a673c4"
+  data-wf-site="6276dc8db9ccf82a88aeff8c"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="Team" property="og:title" />
+    <meta content="Team" property="twitter:title" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Webflow" name="generator" />
+    <title>Idea box</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="images/webclip.png" rel="apple-touch-icon" />
+    <link href="css/ideabox.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h2
+      class="page-title"
+      style="text-align: center; color: white !important; margin-bottom: 30px"
+    >
+      Please post your idea
+    </h2>
+
+    <form class="" id="contactForm">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter your title"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="idea_description"
+              rows="7"
+              cols="50"
+              class="form-control"
+              placeholder="Description"
+            ></textarea>
+          </div>
+        </div>
+        <div class="post">
+          <button type="submit" class="btn btn-primary">Post</button>
+        </div>
+      </div>
+    </form>
+
+    <h1 class="list-post">List of posts</h1>
+    <div id="posts_field"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCYRlgcWTWGcDF7yc41JEPLVus1GEJc3JY",
+        authDomain: "pumpkin-27690.firebaseapp.com",
+        databaseURL: "https://pumpkin-27690-default-rtdb.firebaseio.com",
+        projectId: "pumpkin-27690",
+        storageBucket: "pumpkin-27690.appspot.com",
+        messagingSenderId: "590842118209",
+        appId: "1:590842118209:web:e38b33e364194398a586c0",
+      };
+      firebase.initializeApp(firebaseConfig);
+      var messagesRef = firebase.database().ref("Collected Data");
+      window.addEventListener("load", (event) => {
+        messagesRef.on("value", (snapshot) => {
+          $("#posts_field").html("");
+          snapshot.forEach(function (item) {
+            var itemVal = item.val();
+            $("#posts_field").append(
+              `<div>
+                <h3 class='post-title'>${itemVal.title}<h3>
+                <p class="post-description">${itemVal.description}</p>
+            </div>`
+            );
+          });
+        });
+      });
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", submitForm);
+
+      function submitForm(e) {
+        e.preventDefault(); // Get values
+        var name = getInputVal("name");
+        var description = $("#idea_description").val();
+        saveMessage(name, description);
+        document.getElementById("contactForm").reset();
+      }
+
+      // Function to get get form values
+      function getInputVal(id) {
+        return document.getElementById(id).value;
+      }
+
+      // Save message to firebase
+      function saveMessage(name, description) {
+        var newMessageRef = messagesRef.push();
+        newMessageRef.set({
+          title: name,
+          description: description,
+        });
+      }
+    </script>
+  </body>
+</html>
