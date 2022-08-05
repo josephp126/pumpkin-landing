@@ -41,6 +41,24 @@ div.post button {
   border-radius: 8px;
 }
 
+.next-prev-btn {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.next-prev-btn button {
+  width: 200px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: white;
+  border: 4px solid black;
+  border-radius: 8px;
+}
+.next-prev-btn button:first-child {
+  margin-right: 10px;
+}
+
 .list-post {
   font-size: 40px;
   color: white;
@@ -84,11 +102,6 @@ div.post button {
 }
 
 .button {
-  position: fixed;
-  left: auto;
-  top: auto;
-  right: 1%;
-  bottom: 1%;
   z-index: 999999;
   border: 6px solid #000;
   border-radius: 30px;

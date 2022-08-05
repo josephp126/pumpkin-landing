@@ -58,7 +58,14 @@
 
     <h1 class="list-post">List of ideas</h1>
     <div id="posts_field"></div>
-    <a href="index.html" class="button w-button">Back to Directory</a>
+    <div class="next-prev-btn">
+      <button id="prev_btn" onclick="DecreasePage()">Prev</button>
+      <button id="next_btn" onclick="IncreasePage()">Next</button>
+    </div>
+    <div style="text-align: right">
+      <a href="index.html" class="button w-button">Back to Directory</a>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 
     <script>
@@ -73,18 +80,26 @@
       };
       firebase.initializeApp(firebaseConfig);
       var messagesRef = firebase.database().ref("Collected Data");
+      var data_array = [];
+      var index = 0;
       window.addEventListener("load", (event) => {
+        if (index == 0) {
+          $("#prev_btn").disabled = true;
+        }
         messagesRef.on("value", (snapshot) => {
           $("#posts_field").html("");
           snapshot.forEach(function (item) {
             var itemVal = item.val();
+            data_array.push(itemVal);
+          });
+          for (var i = index; i < index + 10; i++) {
             $("#posts_field").append(
               `<div>
-                <h3 class='post-title'>${itemVal.title}<h3>
-                <p class="post-description">${itemVal.description}</p>
-            </div>`
+                    <h3 class='post-title'>${data_array[i].title}<h3>
+                    <p class="post-description">${data_array[i].description}</p>
+                </div>`
             );
-          });
+          }
         });
       });
 
@@ -112,6 +127,42 @@
           title: name,
           description: description,
         });
+      }
+
+      function DecreasePage() {
+        if (index > 0) {
+          $("#posts_field").html("");
+          index--;
+          for (var i = index * 10; i < index * 10 + 10; i++) {
+            $("#posts_field").append(
+              `<div>
+                <h3 class='post-title'>${data_array[i].title}<h3>
+                <p class="post-description">${data_array[i].description}</p>
+            </div>`
+            );
+            if (index == 0) {
+              $("#prev_btn").disabled = true;
+            }
+          }
+        }
+      }
+
+      function IncreasePage() {
+        if (index < Math.ceil(data_array.length / 10) - 1) {
+          $("#posts_field").html("");
+          index++;
+          for (var i = index * 10; i < index * 10 + 10; i++) {
+            $("#posts_field").append(
+              `<div>
+                <h3 class='post-title'>${data_array[i].title}<h3>
+                <p class="post-description">${data_array[i].description}</p>
+            </div>`
+            );
+          }
+          if (index == Math.ceil(data_array.length / 10) - 1) {
+            $("#next_btn").disabled = true;
+          }
+        }
       }
     </script>
   </body>
