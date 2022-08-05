@@ -11,6 +11,7 @@ body {
   font-size: 56px;
   color: white;
   font-family: cursi;
+  font-style: italic;
   text-align: center;
   margin-bottom: 80px;
   text-shadow: 5px 5px 0 black;
@@ -44,6 +45,7 @@ div.post button {
   font-size: 40px;
   color: white;
   font-family: cursi;
+  font-style: italic;
   text-align: left;
   margin-bottom: 30px;
   text-shadow: 3px 5px 0 black;
@@ -94,11 +96,4 @@ div.post button {
   font-family: Creepster, sans-serif;
   color: #000;
   font-size: 1.3em;
-}
-
-@media (max-width: 600px) {
-  .page-title,
-  .list-post {
-    font-family: cursi !important;
-  }
 }
